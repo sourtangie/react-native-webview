@@ -290,6 +290,10 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
       }
     }
 
+    public void setDownloadingMessage(String message) {
+      downloadedMessage = message;
+    }
+
     protected void evaluateJavascriptWithFallback(String script) {
         evaluateJavascript(script, null);
     }
