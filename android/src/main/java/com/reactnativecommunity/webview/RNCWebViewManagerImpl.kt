@@ -541,9 +541,10 @@ class RNCWebViewManagerImpl {
         view.settings.javaScriptCanOpenWindowsAutomatically = value
     }
 
-    fun setBlobDownloadingEnabled(view: RNCWebView, value: Boolean) {
-    view.setDownloadingBlobEnabled(value)
-    view.setDownloadingMessage(getDownloadingMessageOrDefault())
+    fun setBlobDownloadingEnabled(viewWrapper: RNCWebViewWrapper, value: Boolean) {
+        val view = viewWrapper.webView
+        view.setDownloadingBlobEnabled(value)
+        view.setDownloadingMessage(getDownloadingMessageOrDefault())
     }
 
     fun setShowsVerticalScrollIndicator(viewWrapper: RNCWebViewWrapper, value: Boolean) {
