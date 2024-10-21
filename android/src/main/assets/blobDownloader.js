@@ -132,7 +132,7 @@ window.reactNativeDownloadBlobUrl = function reactNativeDownloadBlobUrl(url) {
       sendMessage({
         event: 'file',
         fileName,
-        data: url,
+        data: reader.result,
       });
     };
   }
