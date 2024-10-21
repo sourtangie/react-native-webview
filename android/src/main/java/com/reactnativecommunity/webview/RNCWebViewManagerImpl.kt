@@ -543,7 +543,7 @@ class RNCWebViewManagerImpl {
 
     fun setBlobDownloadingEnabled(view: RNCWebView, value: Boolean) {
     view.setDownloadingBlobEnabled(value)
-    view.setDownloadedMessage(getDownloadedMessageOrDefault())
+    view.setDownloadingMessage(getDownloadingMessageOrDefault())
     }
 
     fun setShowsVerticalScrollIndicator(viewWrapper: RNCWebViewWrapper, value: Boolean) {
@@ -559,6 +559,12 @@ class RNCWebViewManagerImpl {
     fun setMessagingEnabled(viewWrapper: RNCWebViewWrapper, value: Boolean) {
         val view = viewWrapper.webView
         view.setMessagingEnabled(value)
+    }
+
+   fun setDownloadingBlobEnabled(viewWrapper: RNCWebViewWrapper, value: Boolean) {
+        val view = viewWrapper.webView
+        view.setMessagingEnabled(value)
+        view.isDownloadingBlobEnabled = value;
     }
 
     fun setMediaPlaybackRequiresUserAction(viewWrapper: RNCWebViewWrapper, value: Boolean) {
