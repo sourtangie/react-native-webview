@@ -488,13 +488,15 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
       // parse json
       try {
         JSONObject jsonObject = new JSONObject(json);
+        Log.i("ReactNative", "JSONOBJECT: " + jsonObject + jsonObject.toString());
         String url = jsonObject.getString("data");
         String fileName = jsonObject.getString("fileName");
         // decode base64 string and save to file
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        Log.i("ReactNative", "PATH: " + path);
 
         File file = new File(path, fileName);
-
+        Log.i("ReactNative", "FILE: " + file.toString() + file);
         if (!path.exists())
           path.mkdirs();
 
@@ -510,7 +512,9 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
           file.createNewFile();
 
         String base64EncodedString = url.substring(url.indexOf(",") + 1);
+        Log.i("ReactNative", "BASED64: " + base64EncodedString);
         byte[] decodedBytes = Base64.decode(base64EncodedString, Base64.DEFAULT);
+        Log.i("ReactNative", "BASED64DECODE: " + decodedBytes + decodedBytes.toString());
         OutputStream os = new FileOutputStream(file);
         os.write(decodedBytes);
         os.close();
