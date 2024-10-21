@@ -275,6 +275,21 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
         }
     }
 
+    @SuppressLint("AddJavascriptInterface")
+    public void setDownloadingBlobEnabled(boolean enabled) {
+      if (downloadingBlobEnabled == enabled) {
+        return;
+      }
+  
+      downloadingBlobEnabled = enabled;
+  
+      if (enabled) {
+        addJavascriptInterface(createRNCWebViewDownloadBlobBridge(this), DOWNLOAD_INTERFACE);
+      } else {
+        removeJavascriptInterface(DOWNLOAD_INTERFACE);
+      }
+    }
+
     protected void evaluateJavascriptWithFallback(String script) {
         evaluateJavascript(script, null);
     }
