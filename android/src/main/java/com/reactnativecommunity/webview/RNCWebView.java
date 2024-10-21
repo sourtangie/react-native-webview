@@ -312,6 +312,22 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
         }
     }
 
+    public void injectBlobDownloaderJS() {
+      // get blobDownloaderJS from assets and inject it
+      String blobDownloaderJS = null;
+      try {
+        InputStream inputStream = this.getContext().getAssets().open("blobDownloader.js");
+        int size = inputStream.available();
+        byte[] buffer = new byte[size];
+        inputStream.read(buffer);
+        inputStream.close();
+        blobDownloaderJS = new String(buffer, "UTF-8");
+        evaluateJavascriptWithFallback("(function() {\n" + blobDownloaderJS + ";\n})();");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  
     public void callInjectedJavaScriptBeforeContentLoaded() {
         if (getSettings().getJavaScriptEnabled() &&
                 injectedJSBeforeContentLoaded != null &&
