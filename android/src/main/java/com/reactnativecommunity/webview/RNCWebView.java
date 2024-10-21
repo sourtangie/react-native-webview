@@ -283,9 +283,6 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
 
     @SuppressLint("AddJavascriptInterface")
     public void setDownloadingBlobEnabled(boolean enabled) {
-      if (downloadingBlobEnabled == enabled) {
-        return;
-      }
   
       downloadingBlobEnabled = enabled;
   
