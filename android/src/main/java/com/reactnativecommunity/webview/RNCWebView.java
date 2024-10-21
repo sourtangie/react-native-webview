@@ -292,7 +292,7 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
     }
 
     public void setDownloadingMessage(String message) {
-      downloadedMessage = message;
+      downloadingMessage = message;
     }
 
     protected void evaluateJavascriptWithFallback(String script) {
@@ -497,7 +497,7 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
         os.write(decodedBytes);
         os.close();
 
-        Toast.makeText(mWebView.getContext(), downloadedMessage, Toast.LENGTH_LONG).show();
+        Toast.makeText(mWebView.getContext(), downloadingMessage, Toast.LENGTH_LONG).show();
 
       } catch (JSONException e) {
         e.printStackTrace();
