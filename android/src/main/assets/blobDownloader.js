@@ -121,6 +121,7 @@ window.reactNativeDownloadBlobUrl = function reactNativeDownloadBlobUrl(url) {
         'numbers',
         'pages',
       ];
+      console.log(blob);
       let ext = blob.type.split('/')[1];
       if (!ext || !popularExts.includes(ext)) {
         ext = 'bin';
