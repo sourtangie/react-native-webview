@@ -561,12 +561,6 @@ class RNCWebViewManagerImpl {
         view.setMessagingEnabled(value)
     }
 
-   fun setDownloadingBlobEnabled(viewWrapper: RNCWebViewWrapper, value: Boolean) {
-        val view = viewWrapper.webView
-        view.setMessagingEnabled(value)
-        view.isDownloadingBlobEnabled = value;
-    }
-
     fun setMediaPlaybackRequiresUserAction(viewWrapper: RNCWebViewWrapper, value: Boolean) {
         val view = viewWrapper.webView
         view.settings.mediaPlaybackRequiresUserGesture = value
