@@ -58,6 +58,7 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
     protected @Nullable
     String injectedJSBeforeContentLoaded;
     protected static final String JAVASCRIPT_INTERFACE = "ReactNativeWebView";
+    protected static final String DOWNLOAD_INTERFACE = "ReactNativeWebViewDownloader";
     protected @Nullable
     RNCWebViewBridge bridge;
 
