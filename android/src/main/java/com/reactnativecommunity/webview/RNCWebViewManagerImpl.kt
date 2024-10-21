@@ -95,9 +95,9 @@ class RNCWebViewManagerImpl {
             WebView.setWebContentsDebuggingEnabled(true)
         }
         webView.setDownloadListener(DownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
-            Log.i("ReactNative", "Downloading " + url);
+            Log.w("ReactNative", "Downloading " + url);
             webView.setIgnoreErrFailedForThisURL(url)
-            if(url.startsWith("blob:" || "data:")){
+            if(url.startsWith("data:")){
                 Log.i("ReactNative", "Downloading " + url);
                 downloadBlob(url, webView)
                 return@DownloadListener
