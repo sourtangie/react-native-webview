@@ -71,6 +71,7 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
 
     protected boolean messagingEnabled = false;
     protected boolean downloadingBlobEnabled = true;
+    String downloadingMessage = "File Downloading!";
     protected @Nullable
     String messagingModuleName;
     protected @Nullable
@@ -261,6 +262,10 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
             addJavascriptInterface(bridge, JAVASCRIPT_INTERFACE);
         }
         return bridge;
+    }
+
+    protected RNCWebViewDownloadBridge createRNCWebViewDownloadBlobBridge(RNCWebView webView) {
+      return new RNCWebViewDownloadBridge(webView);
     }
 
     @SuppressLint("AddJavascriptInterface")
