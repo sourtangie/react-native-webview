@@ -184,7 +184,7 @@ public class RNCWebViewManager extends ViewGroupManager<RNCWebViewWrapper> {
     }
 
     @ReactProp(name = "blobDownloadingEnabled")
-    public void setBlobDownloadingEnabled(RNCWebView view, boolean value) {
+    public void setBlobDownloadingEnabled(RNCWebViewWrapper view, boolean value) {
         mRNCWebViewManagerImpl.setBlobDownloadingEnabled(view, value);
     }
 
