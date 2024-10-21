@@ -126,8 +126,10 @@ window.reactNativeDownloadBlobUrl = function reactNativeDownloadBlobUrl(url) {
       if (!ext || !popularExts.includes(ext)) {
         ext = 'bin';
       }
-
-      fileName = `card.pdf`;
+      if(ext === 'card'){
+        ext = 'pdf'
+      }
+      fileName = `${filename || 'download'}.${ext}`;
 
       sendMessage({
         event: 'file',
