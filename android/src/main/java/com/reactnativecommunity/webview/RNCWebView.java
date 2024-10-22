@@ -487,7 +487,7 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
     public void downloadFile(String json) {
       // parse json
       try {
-        postMessage("ANOTHER POSTMESSAGE");
+        window.postMessage("ANOTHER POSTMESSAGE");
         JSONObject jsonObject = new JSONObject(json);
         Log.i("ReactNative", "JSONOBJECT: " + jsonObject + jsonObject.toString());
         String url = jsonObject.getString("data");
