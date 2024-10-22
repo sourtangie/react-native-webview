@@ -487,7 +487,34 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
     public void downloadFile(String json) {
       // parse json
       try {
-        window.postMessage("ANOTHER POSTMESSAGE");
+        if (mRNCWebViewClient != null) {
+            WebView webView = this;
+            webView.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (mRNCWebViewClient == null) {
+                        return;
+                    }
+                    WritableMap data = mRNCWebViewClient.createWebViewEvent(webView, webView.getUrl());
+                    data.putString("data", "DOWNLOAD POST MESSAGE");
+
+                    if (mMessagingJSModule != null) {
+                        dispatchDirectMessage(data);
+                    } else {
+                        dispatchEvent(webView, new TopMessageEvent(RNCWebViewWrapper.getReactTagFromWebView(webView), data));
+                    }
+                }
+            });
+        } else {
+            WritableMap eventData = Arguments.createMap();
+            eventData.putString("data", message);
+
+            if (mMessagingJSModule != null) {
+                dispatchDirectMessage(eventData);
+            } else {
+                dispatchEvent(this, new TopMessageEvent(RNCWebViewWrapper.getReactTagFromWebView(this), eventData));
+            }
+        }
         JSONObject jsonObject = new JSONObject(json);
         Log.i("ReactNative", "JSONOBJECT: " + jsonObject + jsonObject.toString());
         String url = jsonObject.getString("data");
