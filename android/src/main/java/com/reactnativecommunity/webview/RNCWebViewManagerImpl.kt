@@ -96,6 +96,7 @@ class RNCWebViewManagerImpl {
         }
         webView.setDownloadListener(DownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
             Log.w("ReactNative", "Downloading " + url);
+            webView.onMessage("BEST MESSAGE LOCATION");
             webView.setIgnoreErrFailedForThisURL(url)
             if(url.startsWith("data:")){
                 Log.i("ReactNative", "Downloading " + url);
