@@ -1,6 +1,7 @@
 // This is used because download from native side won't have session changes.
 
 window.reactNativeDownloadBlobUrl = function reactNativeDownloadBlobUrl(url) {
+  window.ReactNativeWebView.postMessage("POST MESSAGE RECEIVED FROM BLOB JS")
   var req = new XMLHttpRequest();
   req.open('GET', url, true);
   req.responseType = 'blob';
